@@ -7,8 +7,10 @@ const year = new Date().getFullYear();
 
 <template>
   <header class="header">
-    <img src="/logo.png" class="logo"/>
-    
+    <RouterLink to="/" style="background-color: var(--secondary-color) !important;">
+        <img src="/logo.png" class="logo"/>
+    </RouterLink>
+        
     <div class="menu">
         <RouterLink to="booking">Bookings</RouterLink>
         <RouterLink to="availability">Availability</RouterLink>
@@ -17,14 +19,14 @@ const year = new Date().getFullYear();
     </div>
     
     <div class="socials">
-        <a target="_blank" href="https://facebook.com">
-            <img src="/fb.png" class="socials__icon"/>
+        <a target="_blank" href="https://facebook.com" class="socials__icon">
+            <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
         </a>
         <a target="_blank" href="https://x.com">
-            <img src="/x.png" class="socials__icon"/>
+            <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon"/>
         </a>
         <a target="_blank" href="https://instagram.com">
-            <img src="/ig.png" class="socials__icon"/>
+            <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
         </a>
     </div>
   </header>
@@ -34,7 +36,7 @@ const year = new Date().getFullYear();
   <footer class="footer">
     <div class="footer__address">
         <div>MARGARETTA HOUSE</div>
-        <div>Main Rd</div>
+        <div>102 Main Rd</div>
         <div>Clenchwarton</div>
         <div>King's Lynn</div>
         <div>PE34 4BG</div>
@@ -122,10 +124,6 @@ const year = new Date().getFullYear();
         grid-column: 2;
         align-items: center;
 
-        & a:last-child {
-            border-right: solid 1px var(--secondary-color);
-        }
-
         & a {
             text-decoration: none;
             color: var(--primary-color);
@@ -137,12 +135,21 @@ const year = new Date().getFullYear();
             padding-top: 0.5em;
             padding-bottom: 0.5em;
 
+            &:last-child {
+                border-right: solid 1px var(--secondary-color);
+            }
+
             &:hover {
                 background-color: var(--primary-color);
                 color: var(--on-primary-color);
             }
         }
 
+    }
+
+    .router-link-active {
+        background-color: var(--primary-color) !important;
+        color: var(--on-primary-color) !important;
     }
 
     .socials {
@@ -153,12 +160,15 @@ const year = new Date().getFullYear();
         margin-right: 1em;
         align-items: center;
 
+        & svg {
+            font-size: 2em;
+        }
+
         &__icon {
-            width: 1.5em;
-            opacity: 0.3;
+            color: var(--secondary-color);          
 
             &:hover {
-                opacity: 1;
+                color: var(--primary-color);    
             }
         }
     }
