@@ -29,6 +29,10 @@ const year = new Date().getFullYear();
             <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
         </a>
     </div>
+
+    <div class="burger">
+        <font-awesome-icon :icon="['fas', 'bars']" />
+    </div>
   </header>
   <main class="main">
     <RouterView />
@@ -145,6 +149,10 @@ const year = new Date().getFullYear();
             }
         }
 
+        @media only screen and (max-width: 800px) {
+            display: none;
+        }
+
     }
 
     .router-link-active {
@@ -170,6 +178,31 @@ const year = new Date().getFullYear();
             &:hover {
                 color: var(--primary-color);    
             }
+        }
+
+        @media only screen and (max-width: 800px) {
+            display: none;
+        }
+    }
+
+    .burger {
+        display: none;
+
+        grid-column: 4;
+        align-self: center;
+        margin-right: 2em;
+        cursor: pointer;
+
+        & svg {
+            font-size: 2em;
+        }
+
+        &:hover {
+            color: var(--primary-color);
+        }
+
+        @media only screen and (max-width: 800px) {
+            display: block;
         }
     }
 

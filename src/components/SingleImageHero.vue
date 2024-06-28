@@ -15,7 +15,7 @@ const props = defineProps(['image', 'title','content']);
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
     .hero {
         display: grid;
         margin-top: 5em;
@@ -29,12 +29,13 @@ const props = defineProps(['image', 'title','content']);
         padding: 2em;
         background: #ffffff;
         margin-top: -3em;
-        width: 60em;
+        max-width: 60em;
         justify-self: center;
         text-align: center;
     }
 
     .image {
         max-width: 100em;
+        width: 100%;
     }
 </style>

@@ -7,14 +7,14 @@ import { RouterLink } from 'vue-router'
     <div class="hero">
         <div class="content">
             <div class="title" style="margin-bottom: 1em;">MARGARETTA HOUSE</div>
-            <div>
+            <div class="content__body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempus lobortis scelerisque. 
                 Vivamus dictum elit quis quam laoreet feugiat. Quisque porttitor ipsum in erat bibendum pellentesque.
                 Integer luctus interdum augue ut feugiat. Proin non nunc euismod, facilisis nisi sed, vulputate metus.
                 Mauris vitae dapibus velit, vel pulvinar nisi. Mauris vitae mauris quis arcu eleifend iaculis non sit amet lacus.
                 Morbi odio lectus, pretium sed ligula vitae, tempor placerat mauris. Maecenas tempus vitae urna sit amet hendrerit.
             </div>
-            <div>
+            <div class="content__body">
                 In hac habitasse platea dictumst. Ut cursus rhoncus lorem tincidunt vulputate. Ut eget lectus diam.
                 Vestibulum et mauris bibendum, ultricies leo eu, cursus urna. Suspendisse potenti. Aliquam rhoncus vestibulum enim,
                 id venenatis velit convallis sit amet. Integer vel sagittis sem, a venenatis arcu. Donec faucibus augue sit amet
@@ -32,7 +32,7 @@ import { RouterLink } from 'vue-router'
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
     .hero {
         margin-top: 4em;
         margin-bottom: 4em;
@@ -44,6 +44,11 @@ import { RouterLink } from 'vue-router'
     .content {
         max-width: 50em;
         text-align: center;
+        
+        &__body {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
     }
 
     .buttons {
@@ -53,5 +58,10 @@ import { RouterLink } from 'vue-router'
         margin-top: 2em;
         font-variant: small-caps;
         font-size: 1.1em;
+
+        @media only screen and (max-width: 800px) {
+            grid-auto-flow: row;
+            gap: 1em;
+        }
     }
 </style>

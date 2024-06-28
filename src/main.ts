@@ -10,6 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faPhone,
     faEnvelope,
+    faBars
   } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -18,7 +19,7 @@ import {
     faInstagramSquare
 } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faPhone, faEnvelope, faFacebookSquare, faTwitterSquare, faInstagramSquare)
+library.add(faPhone, faEnvelope, faFacebookSquare, faTwitterSquare, faInstagramSquare, faBars)
 
 const app = createApp(App)
 

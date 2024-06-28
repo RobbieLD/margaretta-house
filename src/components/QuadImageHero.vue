@@ -37,7 +37,7 @@ const props = defineProps<{
         height: fit-content;
         padding: 2em;
         margin-top: -3em;
-        width: 60em;
+        max-width: 60em;
         justify-self: center;
         text-align: center;
     }
@@ -47,8 +47,26 @@ const props = defineProps<{
         grid-auto-flow: column;
         gap: 2em;
         margin-bottom: -5em;
+        justify-content: center;
+        justify-items: center;
+
         &__image {
             max-width: 20em;
+
+            @media only screen and (max-width: 600px) {
+                max-width: 80%;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto;
+            grid-auto-flow: row;
+        }
+
+        @media only screen and (max-width: 1250px) and (min-width: 601px) {
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
         }
     }
 </style>
