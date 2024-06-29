@@ -32,8 +32,8 @@ const menuOpen = ref(false);
         </a>
     </div>
 
-    <div class="burger">
-        <font-awesome-icon :icon="['fas', 'bars']" @click="() => menuOpen = !menuOpen"/>
+    <div class="burger" @click="() => menuOpen = !menuOpen" @touchend="() => menuOpen = !menuOpen">
+        <font-awesome-icon :icon="['fas', 'bars']" />
     </div>
     <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
         <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
