@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { RouterView } from 'vue-router'
 
 const year = new Date().getFullYear();
+const menuOpen = ref(false);
 
 </script>
 
@@ -30,8 +32,26 @@ const year = new Date().getFullYear();
         </a>
     </div>
 
-    <div class="burger">
+    <div class="burger" @click="() => menuOpen = !menuOpen">
         <font-awesome-icon :icon="['fas', 'bars']" />
+    </div>
+    <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
+        <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
+        <RouterLink to="availability" class="mobile-menu__link">Availability</RouterLink>
+        <RouterLink to="contact" class="mobile-menu__link">Contact</RouterLink>
+        <RouterLink to="location" class="mobile-menu__link mobile-menu__link--end">Location</RouterLink>
+
+        <div class="mobile-menu__socials">
+            <a target="_blank" href="https://facebook.com">
+                <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
+            </a>
+            <a target="_blank" href="https://x.com">
+                <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon"/>
+            </a>
+            <a target="_blank" href="https://instagram.com">
+                <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
+            </a>
+        </div>
     </div>
   </header>
   <main class="main">
@@ -62,6 +82,7 @@ const year = new Date().getFullYear();
         --on-secondary-color: rgb(179, 179, 179);
 
         --bg-color: #fff9f3;
+        --header-bg-color: rgb(255, 255, 255);
 
         --title-font: Portrait-Regular;
     }
@@ -80,10 +101,61 @@ const year = new Date().getFullYear();
         min-height: 100vh;
     }
 
+    .mobile-menu {
+        display: none;
+        grid-column: 1/5;
+        justify-self: end;
+        background-color: var(--header-bg-color);
+        min-width: 40%;
+        justify-content: center;
+        padding-top: 2em;
+        padding-bottom: 2em;
+
+        border-bottom: solid 5px var(--secondary-color);
+        border-left: solid 5px var(--secondary-color);
+
+        &__socials {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 1em;
+            justify-content: center;
+            margin-top: 1em;
+
+            & a {
+                font-size: 2em;
+            }
+        }
+
+        &__link {
+            text-decoration: none;
+            color: var(--primary-color);
+            padding-top: 1em;
+            padding-bottom: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            font-variant: small-caps;
+            letter-spacing: 0.2em;
+            border-top: solid 1px var(--secondary-color);
+
+            &:hover {
+                background-color: var(--primary-color);
+                color: var(--on-primary-color);
+            }
+
+            &--end {
+                border-bottom: solid 1px var(--secondary-color);
+            }
+        }
+        
+        &--open {
+            display: grid;
+        }
+    }
+
     .header {
         height: 5em;
         width: 100vw;
-        background-color: white;
+        background-color: var(--header-bg-color);
         position: fixed;
         display: grid;
         grid-template-columns: auto auto 1fr auto;
