@@ -32,8 +32,8 @@ const menuOpen = ref(false);
         </a>
     </div>
 
-    <div class="burger" @click="() => menuOpen = !menuOpen">
-        <font-awesome-icon :icon="['fas', 'bars']" />
+    <div class="burger">
+        <font-awesome-icon :icon="['fas', 'bars']" @click="() => menuOpen = !menuOpen"/>
     </div>
     <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
         <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
@@ -237,7 +237,7 @@ const menuOpen = ref(false);
         grid-auto-flow: column;
         gap: 1em;
         grid-column: 4;
-        margin-right: 1em;
+        margin-right: 2em;
         align-items: center;
 
         & svg {
