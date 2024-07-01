@@ -138,15 +138,10 @@ const updateCount = () => {
         display: none;
         grid-column: 1/5;
         justify-self: end;
-        background-color: var(--header-bg-color);
         min-width: 40%;
         justify-content: center;
         padding-top: 2em;
         padding-bottom: 2em;
-
-        border-bottom: solid 1px var(--secondary-color);
-        border-left: solid 1px var(--secondary-color);
-        border-top: solid 1px var(--secondary-color);
 
         &__socials {
             display: grid;
@@ -162,7 +157,7 @@ const updateCount = () => {
 
         &__link {
             text-decoration: none;
-            color: var(--primary-color);
+            color: var(--on-primary-color);
             padding-top: 1em;
             padding-bottom: 1em;
             padding-left: 1em;
@@ -189,11 +184,9 @@ const updateCount = () => {
     .header {
         height: 5em;
         width: 100vw;
-        background-color: var(--header-bg-color);
         position: fixed;
         display: grid;
         grid-template-columns: auto 1fr auto;
-        border-bottom: solid 1px var(--secondary-color);
     }
 
     .main {
@@ -236,7 +229,7 @@ const updateCount = () => {
 
         & a {
             text-decoration: none;
-            color: var(--primary-color);
+            color: var(--on-primary-color);
             font-variant: small-caps;
             letter-spacing: 0.2em;
             padding-left: 1em;
@@ -250,7 +243,7 @@ const updateCount = () => {
             }
 
             &:hover {
-                background-color: var(--primary-color);
+                background-color: var(--primary-color-light);
                 color: var(--on-primary-color);
             }
         }
@@ -262,7 +255,7 @@ const updateCount = () => {
     }
 
     .router-link-active {
-        background-color: var(--primary-color) !important;
+        background-color: var(--primary-color-light) !important;
         color: var(--on-primary-color) !important;
     }
 
@@ -279,10 +272,10 @@ const updateCount = () => {
         }
 
         &__icon {
-            color: var(--secondary-color);          
+            color: var(--on-primary-color);          
 
             &:hover {
-                color: var(--primary-color);    
+                color: var(--primary-color-light);    
             }
         }
 
@@ -293,7 +286,7 @@ const updateCount = () => {
 
     .burger {
         display: none;
-
+        color: var(--on-primary-color);
         grid-column: 4;
         align-self: center;
         margin-right: 2em;
@@ -304,7 +297,7 @@ const updateCount = () => {
         }
 
         &:hover {
-            color: var(--primary-color);
+            color: var(--primary-color-light);
         }
 
         @media only screen and (max-width: 1250px) {
@@ -316,6 +309,7 @@ const updateCount = () => {
         position: fixed;
         width: 100%;
         display: grid;
+        z-index: -1;
         justify-content: center;
 
         & img {
