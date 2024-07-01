@@ -1,9 +1,9 @@
 name: Publish App
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -18,14 +18,18 @@ jobs:
       - name: Install all dependencies
         working-directory: .
         run: npm install
-      
+
       - name: Build
         working-directory: .
         run: npm run build
-                      
+
       - name: Domain
         working-directory: .
         run: echo 'margarettahouse.com' > dist/CNAME
+
+      - name: Env
+        working-directory: .
+        run: echo 'VITE_VERSION=${{ github.run_number }}' > dist/.env
 
       - name: Push
         uses: s0/git-publish-subdir-action@develop
@@ -34,4 +38,4 @@ jobs:
           BRANCH: gh-pages
           FOLDER: dist
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MESSAGE: "Build: ({sha}) {msg}" 
+          MESSAGE: 'Build: ({sha}) {msg}'

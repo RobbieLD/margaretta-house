@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+//import process from 'process';
+import { onMounted, ref } from 'vue';
 import { RouterView } from 'vue-router'
 
 const year = new Date().getFullYear();
 const menuOpen = ref(false);
+const version = ref('LOCAL');
+
+onMounted(() => {
+    version.value = import.meta.env.VITE_VERSION
+});
 
 // TEMP CODE
 const isAuth = ref(false);
@@ -22,7 +28,7 @@ const updateCount = () => {
 <template>
     <div v-if="!isAuth" class="soon" @click="updateCount" @touchend="updateCount">Coming Soon</div>
     <header v-if="isAuth" class="header">
-        <RouterLink to="/" style="background-color: var(--secondary-color) !important;">
+        <RouterLink to="/" style="background: none !important;">
             <img src="/logo.png" class="logo"/>
         </RouterLink>
             
@@ -79,7 +85,12 @@ const updateCount = () => {
             <div>PE34 4BG</div>
         </div>
         <div class="footer__copyright">
-            ©{{ year }}. Margaretta House. All rights reserved.
+            <div>
+                ©{{ year }}. Margaretta House. All rights reserved.
+            </div>
+            <div>
+                Version: {{ version }}
+            </div>
         </div>
     </footer>
 </template>
@@ -124,8 +135,9 @@ const updateCount = () => {
         padding-top: 2em;
         padding-bottom: 2em;
 
-        border-bottom: solid 5px var(--secondary-color);
-        border-left: solid 5px var(--secondary-color);
+        border-bottom: solid 1px var(--secondary-color);
+        border-left: solid 1px var(--secondary-color);
+        border-top: solid 1px var(--secondary-color);
 
         &__socials {
             display: grid;
@@ -172,7 +184,7 @@ const updateCount = () => {
         position: fixed;
         display: grid;
         grid-template-columns: auto auto 1fr auto;
-        border-bottom: solid 5px var(--secondary-color);
+        border-bottom: solid 1px var(--secondary-color);
     }
 
     .main {

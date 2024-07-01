@@ -7,7 +7,7 @@ import QuadImageHero from '@/components/QuadImageHero.vue';
 
 <template>
     <div>
-        <video class="video" src="/hero.mp4" loop autoplay muted></video>
+        <video class="video" src="/hero.mp4" loop autoplay muted playsinline webkit-playsinline></video>
         <BookingHero></BookingHero>
         <BannerImageHero title="Traditional Charm" content="Old world charm with modern comforts and technology" image="conservatory.jpg" justify="start" align="center"></BannerImageHero>
         <SingleImageHero title="Classic Luxury" image="bathroom.jpg" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempus lobortis scelerisque. Vivamus dictum elit quis quam laoreet feugiat. Quisque porttitor ipsum in erat bibendum pellentesque. Integer luctus interdum augue ut feugiat. Proin non nunc euismod, facilisis nisi sed, vulputate metus. Mauris vitae dapibus velit, vel pulvinar nisi. Mauris vitae mauris quis arcu eleifend iaculis non sit amet lacus. Morbi odio lectus, pretium sed ligula vitae, tempor placerat mauris. Maecenas tempus vitae urna sit amet hendrerit. "></SingleImageHero>
