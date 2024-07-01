@@ -5,44 +5,36 @@ import { RouterView } from 'vue-router'
 const year = new Date().getFullYear();
 const menuOpen = ref(false);
 
+// TEMP CODE
+const isAuth = ref(false);
+const authCount = ref(0);
+
+const updateCount = () => {
+    authCount.value++;
+
+    if (authCount.value >= 3) {
+        isAuth.value = true;
+    }
+}
+
 </script>
 
 <template>
-  <header class="header">
-    <RouterLink to="/" style="background-color: var(--secondary-color) !important;">
-        <img src="/logo.png" class="logo"/>
-    </RouterLink>
+    <div v-if="!isAuth" class="soon" @click="updateCount" @touchend="updateCount">Coming Soon</div>
+    <header v-if="isAuth" class="header">
+        <RouterLink to="/" style="background-color: var(--secondary-color) !important;">
+            <img src="/logo.png" class="logo"/>
+        </RouterLink>
+            
+        <div class="menu">
+            <RouterLink to="booking">Bookings</RouterLink>
+            <RouterLink to="availability">Availability</RouterLink>
+            <RouterLink to="contact">Contact</RouterLink>
+            <RouterLink to="location">Location</RouterLink>
+        </div>
         
-    <div class="menu">
-        <RouterLink to="booking">Bookings</RouterLink>
-        <RouterLink to="availability">Availability</RouterLink>
-        <RouterLink to="contact">Contact</RouterLink>
-        <RouterLink to="location">Location</RouterLink>
-    </div>
-    
-    <div class="socials">
-        <a target="_blank" href="https://facebook.com" class="socials__icon">
-            <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
-        </a>
-        <a target="_blank" href="https://x.com">
-            <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon"/>
-        </a>
-        <a target="_blank" href="https://instagram.com">
-            <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
-        </a>
-    </div>
-
-    <div class="burger" @click="() => menuOpen = !menuOpen" @touchend="() => menuOpen = !menuOpen">
-        <font-awesome-icon :icon="['fas', 'bars']" />
-    </div>
-    <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
-        <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
-        <RouterLink to="availability" class="mobile-menu__link">Availability</RouterLink>
-        <RouterLink to="contact" class="mobile-menu__link">Contact</RouterLink>
-        <RouterLink to="location" class="mobile-menu__link mobile-menu__link--end">Location</RouterLink>
-
-        <div class="mobile-menu__socials">
-            <a target="_blank" href="https://facebook.com">
+        <div class="socials">
+            <a target="_blank" href="https://facebook.com" class="socials__icon">
                 <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
             </a>
             <a target="_blank" href="https://x.com">
@@ -52,23 +44,44 @@ const menuOpen = ref(false);
                 <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
             </a>
         </div>
-    </div>
-  </header>
-  <main class="main">
-    <RouterView />
-  </main>
-  <footer class="footer">
-    <div class="footer__address">
-        <div>MARGARETTA HOUSE</div>
-        <div>102 Main Rd</div>
-        <div>Clenchwarton</div>
-        <div>King's Lynn</div>
-        <div>PE34 4BG</div>
-    </div>
-    <div class="footer__copyright">
-        ©{{ year }}. Margaretta House. All rights reserved.
-    </div>
-  </footer>
+
+        <div class="burger" @click="() => menuOpen = !menuOpen" @touchend="() => menuOpen = !menuOpen">
+            <font-awesome-icon :icon="['fas', 'bars']" />
+        </div>
+        <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
+            <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
+            <RouterLink to="availability" class="mobile-menu__link">Availability</RouterLink>
+            <RouterLink to="contact" class="mobile-menu__link">Contact</RouterLink>
+            <RouterLink to="location" class="mobile-menu__link mobile-menu__link--end">Location</RouterLink>
+
+            <div class="mobile-menu__socials">
+                <a target="_blank" href="https://facebook.com">
+                    <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
+                </a>
+                <a target="_blank" href="https://x.com">
+                    <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon"/>
+                </a>
+                <a target="_blank" href="https://instagram.com">
+                    <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main v-if="isAuth" class="main">
+        <RouterView />
+    </main>
+    <footer v-if="isAuth" class="footer">
+        <div class="footer__address">
+            <div>MARGARETTA HOUSE</div>
+            <div>102 Main Rd</div>
+            <div>Clenchwarton</div>
+            <div>King's Lynn</div>
+            <div>PE34 4BG</div>
+        </div>
+        <div class="footer__copyright">
+            ©{{ year }}. Margaretta House. All rights reserved.
+        </div>
+    </footer>
 </template>
 
 <style lang="scss">
