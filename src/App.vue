@@ -1,14 +1,22 @@
 <script setup lang="ts">
 //import process from 'process';
 import { onMounted, ref } from 'vue';
-import { RouterView } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
+import { useCookies } from 'vue3-cookies';
 
 const year = new Date().getFullYear();
 const menuOpen = ref(false);
 const version = ref('LOCAL');
+const router = useRouter();
+const { cookies } = useCookies();
 
 onMounted(() => {
-    version.value = import.meta.env.VITE_VERSION
+    version.value = import.meta.env.VITE_VERSION;
+    isAuth.value = !!cookies.get("auth");
+});
+
+router.beforeEach(() => {
+    menuOpen.value = false
 });
 
 // TEMP CODE
@@ -20,6 +28,7 @@ const updateCount = () => {
 
     if (authCount.value >= 3) {
         isAuth.value = true;
+        cookies.set("auth", "true")
     }
 }
 
@@ -27,16 +36,16 @@ const updateCount = () => {
 
 <template>
     <div v-if="!isAuth" class="soon" @click="updateCount" @touchend="updateCount">Coming Soon</div>
-    <header v-if="isAuth" class="header">
-        <RouterLink to="/" style="background: none !important;">
-            <img src="/logo.png" class="logo"/>
-        </RouterLink>
-            
+    <header v-if="isAuth" class="header">            
         <div class="menu">
             <RouterLink to="booking">Bookings</RouterLink>
             <RouterLink to="availability">Availability</RouterLink>
             <RouterLink to="contact">Contact</RouterLink>
             <RouterLink to="location">Location</RouterLink>
+        </div>
+        
+        <div class="logo">
+            <img src="/logo.png"/>
         </div>
         
         <div class="socials">
@@ -183,7 +192,7 @@ const updateCount = () => {
         background-color: var(--header-bg-color);
         position: fixed;
         display: grid;
-        grid-template-columns: auto auto 1fr auto;
+        grid-template-columns: auto 1fr auto;
         border-bottom: solid 1px var(--secondary-color);
     }
 
@@ -222,7 +231,7 @@ const updateCount = () => {
         display: grid;
         margin-left: 2em;
         grid-auto-flow: column;
-        grid-column: 2;
+        grid-column: 1;
         align-items: center;
 
         & a {
@@ -246,7 +255,7 @@ const updateCount = () => {
             }
         }
 
-        @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: 1250px) {
             display: none;
         }
 
@@ -277,7 +286,7 @@ const updateCount = () => {
             }
         }
 
-        @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: 1250px) {
             display: none;
         }
     }
@@ -298,15 +307,20 @@ const updateCount = () => {
             color: var(--primary-color);
         }
 
-        @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: 1250px) {
             display: block;
         }
     }
 
     .logo {
-        height: 5em;
-        grid-column: 1;
-        justify-self: center;
+        position: fixed;
+        width: 100%;
+        display: grid;
+        justify-content: center;
+
+        & img {
+            height: 5em;
+        }
     }
 
     .button {
