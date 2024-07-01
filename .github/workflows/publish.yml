@@ -19,6 +19,10 @@ jobs:
         working-directory: .
         run: npm install
 
+      - name: Env
+        working-directory: .
+        run: echo 'VITE_VERSION=${{ github.run_number }}' > .env
+
       - name: Build
         working-directory: .
         run: npm run build
@@ -26,10 +30,6 @@ jobs:
       - name: Domain
         working-directory: .
         run: echo 'margarettahouse.com' > dist/CNAME
-
-      - name: Env
-        working-directory: .
-        run: echo 'VITE_VERSION=${{ github.run_number }}' > dist/.env
 
       - name: Push
         uses: s0/git-publish-subdir-action@develop
