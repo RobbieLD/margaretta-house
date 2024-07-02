@@ -228,6 +228,7 @@ const updateCount = () => {
         display: grid;
         grid-template-columns: auto 1fr auto;
         border-bottom: solid 1px var(--secondary-color);
+        transition: all 500ms ease-in-out;
 
         &--at-top {
             background: none;
