@@ -19,6 +19,5 @@ import QuadImageHero from '@/components/QuadImageHero.vue';
 <style scoped>  
     .video {
         width: 100%;
-        max-height: 90vh;
     }
 </style>

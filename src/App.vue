@@ -1,5 +1,4 @@
 <script setup lang="ts">
-//import process from 'process';
 import { onMounted, ref } from 'vue';
 import { RouterView, useRouter } from 'vue-router'
 import { useCookies } from 'vue3-cookies';
@@ -9,10 +8,40 @@ const menuOpen = ref(false);
 const version = ref('LOCAL');
 const router = useRouter();
 const { cookies } = useCookies();
+const hideHeader = ref(false);
+const atTop = ref(true);
+const mouseHeader = ref(false)
+
+let scrollPos = 0;
 
 onMounted(() => {
     version.value = import.meta.env.VITE_VERSION;
     isAuth.value = !!cookies.get("auth");
+
+    window.addEventListener('scroll', () => {
+        if ((document.body.getBoundingClientRect()).top > scrollPos) {
+            hideHeader.value = false;
+        } else {
+            hideHeader.value = true;
+        }
+
+        scrollPos = (document.body.getBoundingClientRect()).top;
+
+        atTop.value = scrollPos == 0;
+    });
+
+    // https://github.com/nuxt/nuxt/issues/13471
+    setTimeout(() => {
+        const header = document.getElementsByTagName("header")[0];
+
+        header.addEventListener("mouseleave", () => {
+            mouseHeader.value = false;
+        });
+
+        header.addEventListener("mouseenter", () => {
+            mouseHeader.value = true;
+        });
+    }, 100);
 });
 
 router.beforeEach(() => {
@@ -36,8 +65,8 @@ const updateCount = () => {
 
 <template>
     <div v-if="!isAuth" class="soon" @click="updateCount" @touchend="updateCount">Coming Soon</div>
-    <header v-if="isAuth" class="header">            
-        <div class="menu">
+    <header v-if="isAuth" class="header" :class="{ 'header--hidden' : hideHeader, 'header--at-top' : atTop && !mouseHeader }">            
+        <div class="menu" :class="{ 'menu--at-top' : atTop && !mouseHeader }">
             <RouterLink to="booking">Bookings</RouterLink>
             <RouterLink to="availability">Availability</RouterLink>
             <RouterLink to="contact">Contact</RouterLink>
@@ -45,22 +74,22 @@ const updateCount = () => {
         </div>
         
         <div class="logo">
-            <img src="/logo.png"/>
+            <img :src="atTop && !mouseHeader ? '/logo_w.png' : '/logo_b.png'"/>
         </div>
         
         <div class="socials">
             <a target="_blank" href="https://facebook.com" class="socials__icon">
-                <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
+                <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" :class="{'socials__icon--at-top' : atTop && !mouseHeader }" />
             </a>
             <a target="_blank" href="https://x.com">
-                <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon"/>
+                <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon" :class="{'socials__icon--at-top' : atTop && !mouseHeader }"/>
             </a>
             <a target="_blank" href="https://instagram.com">
-                <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
+                <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon" :class="{'socials__icon--at-top' : atTop && !mouseHeader }"/>
             </a>
         </div>
 
-        <div class="burger" @click="() => menuOpen = !menuOpen" @touchend="() => menuOpen = !menuOpen">
+        <div class="burger" :class="{ 'burger--at-top' : atTop && !mouseHeader }" @click="() => menuOpen = !menuOpen" @touchend="() => menuOpen = !menuOpen">
             <font-awesome-icon :icon="['fas', 'bars']" />
         </div>
         <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
@@ -136,12 +165,17 @@ const updateCount = () => {
 
     .mobile-menu {
         display: none;
-        grid-column: 1/5;
-        justify-self: end;
+        position: absolute;
+        background-color: var(--header-bg-color);
         min-width: 40%;
         justify-content: center;
         padding-top: 2em;
         padding-bottom: 2em;
+        right: 0;
+        top: 4em;
+        border-bottom: solid 1px var(--secondary-color);
+        border-left: solid 1px var(--secondary-color);
+        border-top: solid 1px var(--secondary-color);
 
         &__socials {
             display: grid;
@@ -157,7 +191,7 @@ const updateCount = () => {
 
         &__link {
             text-decoration: none;
-            color: var(--on-primary-color);
+            color: var(--primary-color);
             padding-top: 1em;
             padding-bottom: 1em;
             padding-left: 1em;
@@ -181,12 +215,28 @@ const updateCount = () => {
         }
     }
 
+    .page-banner {
+        margin-bottom: 4em;
+        max-width: 100%;
+    }
+
     .header {
         height: 5em;
         width: 100vw;
+        background-color: var(--header-bg-color);
         position: fixed;
         display: grid;
         grid-template-columns: auto 1fr auto;
+        border-bottom: solid 1px var(--secondary-color);
+
+        &--at-top {
+            background: none;
+            border: none;
+        }
+
+        &--hidden {
+            top: -5em
+        }
     }
 
     .main {
@@ -227,9 +277,18 @@ const updateCount = () => {
         grid-column: 1;
         align-items: center;
 
+        &--at-top a {
+            color: white !important;
+            border-left: solid 1px white !important;
+
+            &:last-child {
+                border-right: solid 1px white !important;
+            }
+        }
+
         & a {
             text-decoration: none;
-            color: var(--on-primary-color);
+            color: var(--primary-color);
             font-variant: small-caps;
             letter-spacing: 0.2em;
             padding-left: 1em;
@@ -243,7 +302,7 @@ const updateCount = () => {
             }
 
             &:hover {
-                background-color: var(--primary-color-light);
+                background-color: var(--primary-color);
                 color: var(--on-primary-color);
             }
         }
@@ -255,7 +314,7 @@ const updateCount = () => {
     }
 
     .router-link-active {
-        background-color: var(--primary-color-light) !important;
+        background-color: var(--primary-color) !important;
         color: var(--on-primary-color) !important;
     }
 
@@ -272,10 +331,14 @@ const updateCount = () => {
         }
 
         &__icon {
-            color: var(--on-primary-color);          
+            color: var(--secondary-color);
+            
+            &--at-top {
+                color: white;
+            }
 
             &:hover {
-                color: var(--primary-color-light);    
+                color: var(--primary-color);    
             }
         }
 
@@ -286,18 +349,22 @@ const updateCount = () => {
 
     .burger {
         display: none;
-        color: var(--on-primary-color);
+
         grid-column: 4;
         align-self: center;
         margin-right: 2em;
         cursor: pointer;
+
+        &--at-top {
+            color: white;
+        }
 
         & svg {
             font-size: 2em;
         }
 
         &:hover {
-            color: var(--primary-color-light);
+            color: var(--primary-color);
         }
 
         @media only screen and (max-width: 1250px) {
@@ -309,8 +376,8 @@ const updateCount = () => {
         position: fixed;
         width: 100%;
         display: grid;
-        z-index: -1;
         justify-content: center;
+        z-index: -1;
 
         & img {
             height: 5em;

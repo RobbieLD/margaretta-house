@@ -34,7 +34,7 @@ import { RouterLink } from 'vue-router'
 
 <style scoped lang="scss">
     .hero {
-        margin-top: 4em;
+        margin-top: -8em;
         margin-bottom: 4em;
         display: grid;
         justify-content: center;
@@ -44,6 +44,8 @@ import { RouterLink } from 'vue-router'
     .content {
         max-width: 50em;
         text-align: center;
+        background-color: white;
+        padding: 1em;
         
         &__body {
             margin-left: 1em;

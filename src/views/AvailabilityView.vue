@@ -2,6 +2,7 @@
 </script>
 
 <template>
+    <img src="/chairs.jpg" class="page-banner"/>
     <div class="soon">Coming Soon</div>
     
 </template>

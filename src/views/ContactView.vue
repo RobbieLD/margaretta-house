@@ -2,6 +2,7 @@
 </script>
 
 <template>
+    <img src="/shed.jpg" class="page-banner"/>
     <div class="contacts">
         <div class="contacts__contact">
             <font-awesome-icon :icon="['fas', 'envelope']" class="contacts__icon" />
@@ -24,7 +25,7 @@
         grid-auto-flow: column;
         justify-content: center;
         align-content: center;
-        height: 100%;
+        margin-top: 4em;
         gap: 2em;
 
         &__contact {
