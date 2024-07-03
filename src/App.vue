@@ -27,7 +27,9 @@ onMounted(() => {
 
         scrollPos = (document.body.getBoundingClientRect()).top;
 
-        atTop.value = scrollPos == 0;
+        atTop.value = scrollPos > -10;
+
+        console.log(scrollPos);
     });
 
     // https://github.com/nuxt/nuxt/issues/13471
