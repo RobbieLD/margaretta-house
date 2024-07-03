@@ -27,7 +27,7 @@ onMounted(() => {
 
         scrollPos = (document.body.getBoundingClientRect()).top;
 
-        atTop.value = Math.abs(scrollPos) <= 0;
+        atTop.value = scrollPos >= 0;
 
         console.log(atTop.value);
     });
