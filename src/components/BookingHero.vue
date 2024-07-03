@@ -39,6 +39,8 @@ import { RouterLink } from 'vue-router'
         display: grid;
         justify-content: center;
         align-content: center;
+        position: relative;
+        z-index: 9;
     }
 
     .content {
