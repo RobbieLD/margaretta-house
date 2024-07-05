@@ -6,23 +6,15 @@ import { RouterLink } from 'vue-router'
 <template>
     <div class="hero">
         <div class="content">
-            <div class="title" style="margin-bottom: 1em;">MARGARETTA HOUSE</div>
+            <div class="title" style="margin-bottom: 1em; text-align: center; padding-top: 1em;">WELCOME TO MARGARETTA HOUSE</div>
             <div class="content__body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempus lobortis scelerisque. 
-                Vivamus dictum elit quis quam laoreet feugiat. Quisque porttitor ipsum in erat bibendum pellentesque.
-                Integer luctus interdum augue ut feugiat. Proin non nunc euismod, facilisis nisi sed, vulputate metus.
-                Mauris vitae dapibus velit, vel pulvinar nisi. Mauris vitae mauris quis arcu eleifend iaculis non sit amet lacus.
-                Morbi odio lectus, pretium sed ligula vitae, tempor placerat mauris. Maecenas tempus vitae urna sit amet hendrerit.
+                An enchanting haven nestled on 43 acres of private land, including a walled garden, two wildlife ponds, and serene woodlands. Margaretta House is an exquisite estate that offers the perfect blend of luxury and tranquility. In it's own magical corner of Norfolk, it is just 10 minutes from King’s Lynn and not far from the late Queen’s beloved country home on the Sandringham Estate.
             </div>
             <div class="content__body">
-                In hac habitasse platea dictumst. Ut cursus rhoncus lorem tincidunt vulputate. Ut eget lectus diam.
-                Vestibulum et mauris bibendum, ultricies leo eu, cursus urna. Suspendisse potenti. Aliquam rhoncus vestibulum enim,
-                id venenatis velit convallis sit amet. Integer vel sagittis sem, a venenatis arcu. Donec faucibus augue sit amet
-                lacus posuere, quis dignissim lorem efficitur. Donec eros urna, lobortis vel aliquet maximus, finibus ut nulla.
-                Sed quis maximus nibh, in mollis erat. Praesent ullamcorper lorem at massa placerat consectetur. Pellentesque
-                placerat pulvinar iaculis. Quisque ac fermentum diam, sit amet facilisis justo. Curabitur ullamcorper nulla et
-                nisl maximus, non porta risus dignissim. Sed orci lectus, lacinia ac felis nec, ullamcorper rutrum sem. Donec
-                venenatis nulla enim, nec scelerisque sem maximus eget. 
+                Traveling along the long, beautiful tree-lined driveway to Margaretta House, with the sun streaming through the trees, is a moment of entering another world. Arriving at the Georgian country house, which dates back to 1820, marks the beginning of your retreat.
+            </div>
+            <div class="content__body">
+                The grounds also feature an outdoor heated swimming pool, fabulous hot tub, a superb new stable block, together with attractive ironwork estate-fenced paddocks and a ménage, a children’s play area, and even a camping pod in its woodland.
             </div>
         </div>
         <div class="buttons">
@@ -44,14 +36,14 @@ import { RouterLink } from 'vue-router'
     }
 
     .content {
-        max-width: 50em;
-        text-align: center;
+        max-width: 60em;
         background-color: white;
         padding: 1em;
         
         &__body {
             margin-left: 1em;
             margin-right: 1em;
+            margin-bottom: 1em;
         }
     }
 

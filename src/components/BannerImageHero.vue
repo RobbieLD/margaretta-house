@@ -31,5 +31,6 @@ const props = defineProps(['image', 'title','content', 'justify', 'align'])
         height: fit-content;
         padding: 2em;
         background: #ffffff8c;
+        max-width: 40em;
     }
 </style>
