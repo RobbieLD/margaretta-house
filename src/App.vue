@@ -69,9 +69,11 @@ const updateCount = () => {
     <div v-if="!isAuth" class="soon" @click="updateCount" @touchend="updateCount">Coming Soon</div>
     <header v-if="isAuth" class="header" :class="{ 'header--hidden' : hideHeader, 'header--at-top' : atTop && !mouseHeader }">            
         <div class="menu" :class="{ 'menu--at-top' : atTop && !mouseHeader }">
+            <RouterLink to="/" v-if="router.currentRoute.value.path != '/'">Home</RouterLink>
             <RouterLink to="booking">Bookings</RouterLink>
             <RouterLink to="availability">Availability</RouterLink>
             <RouterLink to="contact">Contact</RouterLink>
+            <RouterLink to="local">Local Attractions</RouterLink>
             <RouterLink to="location">Location</RouterLink>
         </div>
         
@@ -95,9 +97,11 @@ const updateCount = () => {
             <font-awesome-icon :icon="['fas', 'bars']" />
         </div>
         <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
+            <RouterLink to="/" class="mobile-menu__link" v-if="router.currentRoute.value.path != '/'">Home</RouterLink>
             <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
             <RouterLink to="availability" class="mobile-menu__link">Availability</RouterLink>
             <RouterLink to="contact" class="mobile-menu__link">Contact</RouterLink>
+            <RouterLink to="local" class="mobile-menu__link">Local Attractions</RouterLink>
             <RouterLink to="location" class="mobile-menu__link mobile-menu__link--end">Location</RouterLink>
 
             <div class="mobile-menu__socials">
@@ -157,6 +161,7 @@ const updateCount = () => {
         margin: 0;
         font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         background-color: var(--bg-color);
+        scroll-behavior: smooth;
     }
 
     #app {
@@ -310,7 +315,7 @@ const updateCount = () => {
             }
         }
 
-        @media only screen and (max-width: 1250px) {
+        @media only screen and (max-width: 1760px) {
             display: none;
         }
 
@@ -345,7 +350,7 @@ const updateCount = () => {
             }
         }
 
-        @media only screen and (max-width: 1250px) {
+        @media only screen and (max-width: 1760px) {
             display: none;
         }
     }
@@ -370,7 +375,7 @@ const updateCount = () => {
             color: var(--primary-color);
         }
 
-        @media only screen and (max-width: 1250px) {
+        @media only screen and (max-width: 1760px) {
             display: block;
         }
     }
