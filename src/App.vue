@@ -159,11 +159,6 @@ const updateCount = () => {
         --header-bg-color: rgb(255, 255, 255);
 
         --title-font: Portrait-Regular;
-
-        --ldg-component-button-contrast-color: red !important;
-    --ldg-component-button-contrast-color: red !important;
-    --ldg-component-button-hover-color: blue !important;
-    
     }
 
     html,

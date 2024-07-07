@@ -32,6 +32,11 @@ import { RouterLink } from 'vue-router'
         align-content: center;
         position: relative;
         z-index: 9;
+
+        @media only screen and (max-width: 850px) {
+            margin-top: 0;
+            z-index: 0;
+        }
     }
 
     .content {

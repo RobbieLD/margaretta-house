@@ -16,8 +16,13 @@ import QuadImageHero from '@/components/QuadImageHero.vue';
     </div>
 </template>
 
-<style scoped>  
+<style scoped lang="scss">  
     .video {
         width: 100%;
+
+        @media only screen and (max-width: 850px) {
+            width: 200%;
+            margin-left: -50%;
+        }
     }
 </style>
