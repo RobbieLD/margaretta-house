@@ -18,8 +18,7 @@ import { RouterLink } from 'vue-router'
             </div>
         </div>
         <div class="buttons">
-            <RouterLink class="button" to="availability">Availability</RouterLink>
-            <RouterLink class="button" to="bookings">Book Now</RouterLink>
+            <RouterLink class="button" to="booking">Book Now</RouterLink>
         </div>
     </div>
 </template>

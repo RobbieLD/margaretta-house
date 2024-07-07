@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
+
+onMounted(() => {
+    const logify = document.createElement('script');
+    logify.setAttribute('src', 'https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js');
+    document.head.appendChild(logify);
+});
 </script>
 
 <template>

@@ -36,7 +36,12 @@ onMounted(() => {
     setTimeout(() => {
         const header = document.getElementsByTagName("header")[0];
 
-        header.addEventListener("mouseleave", () => {
+        if (!header) {
+            console.log("dom not loaded");
+            return;
+        }
+
+        header.addEventListener("mouseout", () => {
             mouseHeader.value = false;
         });
 
@@ -71,7 +76,7 @@ const updateCount = () => {
         <div class="menu" :class="{ 'menu--at-top' : atTop && !mouseHeader }">
             <RouterLink to="/" v-if="router.currentRoute.value.path != '/'">Home</RouterLink>
             <RouterLink to="booking">Bookings</RouterLink>
-            <RouterLink to="availability">Availability</RouterLink>
+            <!-- <RouterLink to="availability">Availability</RouterLink> -->
             <RouterLink to="contact">Contact</RouterLink>
             <RouterLink to="local">Local Attractions</RouterLink>
             <RouterLink to="location">Location</RouterLink>
@@ -99,7 +104,7 @@ const updateCount = () => {
         <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
             <RouterLink to="/" class="mobile-menu__link" v-if="router.currentRoute.value.path != '/'">Home</RouterLink>
             <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
-            <RouterLink to="availability" class="mobile-menu__link">Availability</RouterLink>
+            <!-- <RouterLink to="availability" class="mobile-menu__link">Availability</RouterLink> -->
             <RouterLink to="contact" class="mobile-menu__link">Contact</RouterLink>
             <RouterLink to="local" class="mobile-menu__link">Local Attractions</RouterLink>
             <RouterLink to="location" class="mobile-menu__link mobile-menu__link--end">Location</RouterLink>
@@ -237,6 +242,7 @@ const updateCount = () => {
     .header {
         height: 5em;
         width: 100vw;
+        z-index: 9;
         background-color: var(--header-bg-color);
         position: fixed;
         display: grid;
@@ -322,7 +328,7 @@ const updateCount = () => {
             }
         }
 
-        @media only screen and (max-width: 1760px) {
+        @media only screen and (max-width: 1450px) {
             display: none;
         }
 
@@ -357,7 +363,7 @@ const updateCount = () => {
             }
         }
 
-        @media only screen and (max-width: 1760px) {
+        @media only screen and (max-width: 1450px) {
             display: none;
         }
     }
@@ -382,7 +388,7 @@ const updateCount = () => {
             color: var(--primary-color);
         }
 
-        @media only screen and (max-width: 1760px) {
+        @media only screen and (max-width: 1450px) {
             display: block;
         }
     }
