@@ -6,7 +6,7 @@ import QuadImageHero from '@/components/QuadImageHero.vue';
 </script>
 
 <template>
-    <div>
+    <div class="container">
         <video class="video" src="/hero.mp4" loop autoplay muted playsinline webkit-playsinline></video>
         <BookingHero></BookingHero>
         <BannerImageHero title="Accommodation" content="Margaretta House boasts six beautifully appointed bedrooms, including the stunning corner master bedroom with fabulous far-reaching double aspect views, an ensuite bathroom and a dressing room. Each bedroom is designed to provide a restful and elegant atmosphere. With three spacious bathrooms, guests can enjoy both comfort and convenience throughout their stay." image="conservatory.jpg" justify="start" align="center"></BannerImageHero>
@@ -23,6 +23,12 @@ import QuadImageHero from '@/components/QuadImageHero.vue';
         @media only screen and (max-width: 850px) {
             width: 200%;
             margin-left: -50%;
+        }
+    }
+
+    .container {
+        @media only screen and (max-width: 850px) {
+            overflow-x: hidden;
         }
     }
 </style>
