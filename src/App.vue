@@ -147,12 +147,18 @@ const updateCount = () => {
         --on-primary-color: rgb(255, 255, 255);
 
         --secondary-color: rgb(38, 35, 31);
+        --secondary-color-light: rgb(82, 69, 54);
         --on-secondary-color: rgb(179, 179, 179);
 
         --bg-color: #fff9f3;
         --header-bg-color: rgb(255, 255, 255);
 
         --title-font: Portrait-Regular;
+
+        --ldg-component-button-contrast-color: red !important;
+    --ldg-component-button-contrast-color: red !important;
+    --ldg-component-button-hover-color: blue !important;
+    
     }
 
     html,
@@ -174,7 +180,8 @@ const updateCount = () => {
         display: none;
         position: absolute;
         background-color: var(--header-bg-color);
-        min-width: 40%;
+        padding-left: 2em;
+        padding-right: 2em;
         justify-content: center;
         padding-top: 2em;
         padding-bottom: 2em;
