@@ -10,7 +10,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <img src="/garden.jpg" class="page-banner"/>
+    <div class="page-title" style="background-image: url('/garden.jpg');">
+        <span class="page-title__title">
+            Bookings
+        </span>
+    </div>
     <div class="booking-container">
         <div class="title" style="text-align: center;">Check Availability</div>
         <div

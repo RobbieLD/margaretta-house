@@ -286,6 +286,26 @@ const updateCount = () => {
         }
     }
 
+    .page-title {
+        height: 10em;
+        background-size: cover;
+        width: 100%;
+        font-size: 2em;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+
+        &__title {
+            background-color: #ffffff8c;
+            color: var(--secondary-color);
+            padding-right: 1em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            padding-left: 1em;
+            font-family: var(--title-font);
+        }
+    }
+
     .menu {
         display: grid;
         margin-left: 2em;

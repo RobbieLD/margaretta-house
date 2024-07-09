@@ -2,7 +2,12 @@
 </script>
 
 <template>
-    <img src="/shed.jpg" class="page-banner"/>
+    
+    <div class="page-title" style="background-image: url('/shed.jpg');">
+        <span class="page-title__title">
+            Contact Us
+        </span>
+    </div>
     <div class="contacts">
         <div class="contacts__contact">
             <font-awesome-icon :icon="['fas', 'envelope']" class="contacts__icon" />
@@ -20,26 +25,28 @@
 </template>
 
 <style scoped lang="scss">
+    
     .contacts {
         display: grid;
-        grid-auto-flow: column;
         justify-content: center;
         align-content: center;
         margin-top: 4em;
         gap: 2em;
+        margin-bottom: 8em;
+
+        grid-auto-flow: column;
+
+        @media only screen and (max-width: 700px) {
+            grid-auto-flow: row;
+        }
 
         &__contact {
             display: grid;
             grid-auto-flow: row;
             justify-items: center;
             gap: 1.5em;
-            border-left: solid 1px var(--secondary-color);
             padding-left: 2em;
-
-            &:last-child {
-                border-right: solid 1px var(--secondary-color);
-                padding-right: 2em;
-            }
+            padding-right: 2em;
         }
 
         &__icon {

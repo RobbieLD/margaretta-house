@@ -2,7 +2,11 @@
 </script>
 
 <template>
-    <img src="/yard.jpg" class="page-banner"/>    
+    <div class="page-title" style="background-image: url('/yard.jpg');">
+        <span class="page-title__title">
+            Local Attractions
+        </span>
+    </div>   
     <div class="links">
         <div class="link">
             <div class="link__name">
@@ -131,34 +135,6 @@
 
         <div class="link">
             <div class="link__name">
-                Wells Crab House Seafood Restaurant
-            </div>
-            <a target="_blank" class="link__url" href="http://www.wellscrabhouse.co.uk/">http://www.wellscrabhouse.co.uk</a>    
-            <div class="link__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum aliquam dui, et viverra elit efficitur in. 
-                Aenean vestibulum nibh vitae ante porttitor semper. Morbi posuere finibus erat, in pretium mauris mollis vitae. 
-            </div>
-            <div class="link__address">
-                38-40 Freeman St, Wells-next-the-Sea NR23 1BA
-            </div>
-        </div>
-
-        <div class="link">
-            <div class="link__name">
-                Thornham Deli
-            </div>
-            <a target="_blank" class="link__url" href="http://www.thornhamdeli.co.uk/">http://www.thornhamdeli.co.uk</a>    
-            <div class="link__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum aliquam dui, et viverra elit efficitur in. 
-                Aenean vestibulum nibh vitae ante porttitor semper. Morbi posuere finibus erat, in pretium mauris mollis vitae. 
-            </div>
-            <div class="link__address">
-                Thornham, Hunstanton PE36 6LX
-            </div>
-        </div>
-
-        <div class="link">
-            <div class="link__name">
                 Norfolk Lavender
             </div>
             <a target="_blank" class="link__url" href="https://norfolk-lavender.co.uk">https://norfolk-lavender.co.uk</a>    
@@ -193,7 +169,7 @@
                 <ul>
                     <li>Any beach! 🏖️ </li>
                     <li>Sandringham playground</li>
-                    <li>Arcades at Hunstanton or wells</li>
+                    <li>Arcades at Hunstanton</li>
                     <li>Hunstanton sealife 50% off for pe34 postcode </li>
                     <li>Snettisham park farm</li>
                 </ul>
