@@ -8,47 +8,10 @@ const menuOpen = ref(false);
 const version = ref('LOCAL');
 const router = useRouter();
 const { cookies } = useCookies();
-const hideHeader = ref(false);
-const atTop = ref(true);
-const mouseHeader = ref(false)
-
-let scrollPos = 0;
 
 onMounted(() => {
     version.value = import.meta.env.VITE_VERSION;
     isAuth.value = !!cookies.get("auth");
-
-    window.addEventListener('scroll', () => {
-        if ((document.body.getBoundingClientRect()).top > scrollPos) {
-            hideHeader.value = false;
-        } else {
-            hideHeader.value = true;
-        }
-
-        scrollPos = (document.body.getBoundingClientRect()).top;
-
-        atTop.value = scrollPos >= 0;
-
-        console.log(atTop.value);
-    });
-
-    // https://github.com/nuxt/nuxt/issues/13471
-    setTimeout(() => {
-        const header = document.getElementsByTagName("header")[0];
-
-        if (!header) {
-            console.log("dom not loaded");
-            return;
-        }
-
-        header.addEventListener("mouseout", () => {
-            mouseHeader.value = false;
-        });
-
-        header.addEventListener("mouseenter", () => {
-            mouseHeader.value = true;
-        });
-    }, 100);
 });
 
 router.beforeEach(() => {
@@ -72,39 +35,33 @@ const updateCount = () => {
 
 <template>
     <div v-if="!isAuth" class="soon" @click="updateCount" @touchend="updateCount">Coming Soon</div>
-    <header v-if="isAuth" class="header" :class="{ 'header--hidden' : hideHeader, 'header--at-top' : atTop && !mouseHeader }">            
-        <div class="menu" :class="{ 'menu--at-top' : atTop && !mouseHeader }">
+    <header v-if="isAuth" class="header">            
+        <div class="menu">
             <RouterLink to="/" v-if="router.currentRoute.value.path != '/'">Home</RouterLink>
             <RouterLink to="booking">Bookings</RouterLink>
-            <!-- <RouterLink to="availability">Availability</RouterLink> -->
             <RouterLink to="contact">Contact</RouterLink>
             <RouterLink to="local">Local Attractions</RouterLink>
             <RouterLink to="location">Location</RouterLink>
         </div>
         
-        <div class="logo">
-            <img :src="atTop && !mouseHeader ? '/logo_w.png' : '/logo_b.png'"/>
-        </div>
-        
         <div class="socials">
             <a target="_blank" href="https://facebook.com" class="socials__icon">
-                <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" :class="{'socials__icon--at-top' : atTop && !mouseHeader }" />
+                <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
             </a>
             <a target="_blank" href="https://x.com">
-                <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon" :class="{'socials__icon--at-top' : atTop && !mouseHeader }"/>
+                <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon" />
             </a>
             <a target="_blank" href="https://instagram.com">
-                <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon" :class="{'socials__icon--at-top' : atTop && !mouseHeader }"/>
+                <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon" />
             </a>
         </div>
 
-        <div class="burger" :class="{ 'burger--at-top' : atTop && !mouseHeader }" @click="() => menuOpen = !menuOpen" @touchend="() => menuOpen = !menuOpen">
+        <div class="burger" @click="() => menuOpen = !menuOpen" @touchend="() => menuOpen = !menuOpen">
             <font-awesome-icon :icon="['fas', 'bars']" />
         </div>
         <div class="mobile-menu" :class="{ 'mobile-menu--open': menuOpen }">
             <RouterLink to="/" class="mobile-menu__link" v-if="router.currentRoute.value.path != '/'">Home</RouterLink>
             <RouterLink to="booking" class="mobile-menu__link">Bookings</RouterLink>
-            <!-- <RouterLink to="availability" class="mobile-menu__link">Availability</RouterLink> -->
             <RouterLink to="contact" class="mobile-menu__link">Contact</RouterLink>
             <RouterLink to="local" class="mobile-menu__link">Local Attractions</RouterLink>
             <RouterLink to="location" class="mobile-menu__link mobile-menu__link--end">Location</RouterLink>
@@ -172,7 +129,7 @@ const updateCount = () => {
 
     #app {
         display: grid;
-        grid-template-rows: 1fr 20em;
+        grid-template-rows: auto 1fr 20em;
         min-height: 100vh;
     }
 
@@ -239,28 +196,22 @@ const updateCount = () => {
         width: 100vw;
         z-index: 9;
         background-color: var(--header-bg-color);
-        position: fixed;
         display: grid;
         grid-template-columns: auto 1fr auto;
         border-bottom: solid 1px var(--secondary-color);
-        transition: all 500ms ease-in-out;
-
-        &--at-top {
-            background: none;
-            border: none;
-        }
-
-        &--hidden {
-            top: -5em
-        }
+        grid-row: 1;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url('/logo_b.png');
     }
 
     .main {
-        grid-row: 1;
+        grid-row: 2;
     }
 
     .footer {
-        grid-row: 2;
+        grid-row: 3;
         background-color: var(--secondary-color);
         color: var(--on-secondary-color);
         padding: 3em;
@@ -313,14 +264,6 @@ const updateCount = () => {
         grid-column: 1;
         align-items: center;
 
-        &--at-top a {
-            color: white !important;
-            border-left: solid 1px white !important;
-
-            &:last-child {
-                border-right: solid 1px white !important;
-            }
-        }
 
         & a {
             text-decoration: none;
@@ -369,10 +312,6 @@ const updateCount = () => {
         &__icon {
             color: var(--secondary-color);
             
-            &--at-top {
-                color: white;
-            }
-
             &:hover {
                 color: var(--primary-color);    
             }
@@ -391,10 +330,6 @@ const updateCount = () => {
         margin-right: 2em;
         cursor: pointer;
 
-        &--at-top {
-            color: white;
-        }
-
         & svg {
             font-size: 2em;
         }
@@ -405,18 +340,6 @@ const updateCount = () => {
 
         @media only screen and (max-width: 1450px) {
             display: block;
-        }
-    }
-
-    .logo {
-        position: fixed;
-        width: 100%;
-        display: grid;
-        justify-content: center;
-        z-index: -1;
-
-        & img {
-            height: 5em;
         }
     }
 
