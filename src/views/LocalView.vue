@@ -104,7 +104,7 @@
             </div>
             <a target="_blank" class="link__url" href="https://www.theoldstorenorfolk.co.uk/">https://www.theoldstorenorfolk.co.uk</a>    
             <div class="link__description">
-                <img src="/attractions/ffolkes.jpg">
+                <img src="/attractions/store.jpg">
             </div>
             <div class="link__address">
                 5 Pedlars Mews, Snettisham, King's Lynn PE31 7XQ
