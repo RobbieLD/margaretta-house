@@ -21,7 +21,7 @@ onMounted(() => {
         id="lodgify-search-bar"
         data-website-id="526560"
         data-language-code="en"
-        data-checkout-page-url="https://checkout.lodgify.com/andrew-venz/en/#/592246"
+        data-checkout-page-url="https://checkout.lodgify.com/margaretta-house/en/#/592246"
         
         data-dates-check-in-label="Arrival"
         data-dates-check-out-label="Departure"
