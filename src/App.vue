@@ -84,8 +84,8 @@ const updateCount = () => {
     </main>
     <footer v-if="isAuth" class="footer">
         <div class="footer__address">
-            <div>MARGARETTA HOUSE</div>
-            <div>102 Main Rd</div>
+            <div>Margaretta House</div>
+            <div>100 Main Rd</div>
             <div>Clenchwarton</div>
             <div>King's Lynn</div>
             <div>PE34 4BG</div>
