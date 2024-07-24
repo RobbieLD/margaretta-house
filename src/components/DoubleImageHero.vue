@@ -7,8 +7,8 @@ const props = defineProps(['image1', 'image2', 'title','content', 'align']);
 
 <template>
     <div class="hero">
-        <img :src="props.image1" class="hero__image">
-        <img :src="props.image2" class="hero__image">
+        <img :src="props.image1" class="hero__image hero__image-1">
+        <img :src="props.image2" class="hero__image hero__image-2">
             
         <div class="content">
             <div class="title">{{ props.title }}</div>
@@ -24,15 +24,32 @@ const props = defineProps(['image1', 'image2', 'title','content', 'align']);
         margin-bottom: 5em;
         justify-content: center;
         min-height: 30em;
-        grid-auto-flow: column;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
         gap: 1em;
 
         @media only screen and (max-width: 1200px) {
-            grid-auto-flow: row;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto;
         }
 
         &__image {
             width: 100%;
+
+            &-1 {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            &-2 {
+                grid-column: 2;
+                grid-row: 1;
+
+                @media only screen and (max-width: 1200px) {
+                    grid-row: 3;
+                    grid-column: 1;
+                }
+            }
         }
     }
 
@@ -40,13 +57,19 @@ const props = defineProps(['image1', 'image2', 'title','content', 'align']);
         width: fit-content;
         height: fit-content;
         padding: 2em;
-        background: var(--bg-transparent);
+        background: white;
         margin-top: -3em;
         max-width: 60em;
         text-align: center;
-        position: absolute;
+        grid-row: 2;
+        grid-column: 1/3;
         justify-self: center;
-        align-self: center;
+
+        @media only screen and (max-width: 1200px) {
+            grid-row: 2;
+            grid-column: 1;
+            margin-bottom: -3em;
+        }
     }
 
     .image {

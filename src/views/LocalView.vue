@@ -139,6 +139,19 @@
 
         <div class="link">
             <div class="link__name">
+                Rusty Krab Rum Shop
+            </div>
+            <a target="_blank" class="link__url" href="https://rustykrabrumshop.co.uk/">https://rustykrabrumshop.co.uk</a>    
+            <div class="link__description">
+                <img src="/attractions/krab.jpg">
+            </div>
+            <div class="link__address">
+                13 Tower St, King's Lynn PE30 1EJ
+            </div>
+        </div>
+
+        <div class="link">
+            <div class="link__name">
                 Good for the kids
             </div>
             <div class="link__description">
