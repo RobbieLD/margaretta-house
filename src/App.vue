@@ -80,7 +80,6 @@ const updateCount = () => {
         <div class="footer__address">
             <div>Margaretta House</div>
             <div>100 Main Rd</div>
-            <div>Clenchwarton</div>
             <div>King's Lynn</div>
             <div>PE34 4BG</div>
         </div>
