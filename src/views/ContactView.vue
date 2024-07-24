@@ -3,7 +3,7 @@
 
 <template>
     
-    <div class="page-title" style="background-image: url('/shed.jpg');">
+    <div class="page-title" style="background-image: url('/trees_2.jpg');">
         <span class="page-title__title">
             Contact Us
         </span>

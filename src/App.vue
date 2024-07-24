@@ -45,13 +45,10 @@ const updateCount = () => {
         </div>
         
         <div class="socials">
-            <a target="_blank" href="https://facebook.com" class="socials__icon">
+            <a target="_blank" href="https://www.facebook.com/share/k6iFdcqRQXribEY6/?mibextid=LQQJ4d" class="socials__icon">
                 <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
             </a>
-            <a target="_blank" href="https://x.com">
-                <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon" />
-            </a>
-            <a target="_blank" href="https://instagram.com">
+            <a target="_blank" href="https://www.instagram.com/thelizvenz?igsh=Mmd5aGF3eTF2YWdi&utm_source=qr">
                 <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon" />
             </a>
         </div>
@@ -67,13 +64,10 @@ const updateCount = () => {
             <RouterLink to="location" class="mobile-menu__link mobile-menu__link--end">Location</RouterLink>
 
             <div class="mobile-menu__socials">
-                <a target="_blank" href="https://facebook.com">
+                <a target="_blank" href="https://www.facebook.com/share/k6iFdcqRQXribEY6/?mibextid=LQQJ4d">
                     <font-awesome-icon :icon="['fab', 'square-facebook']" class="socials__icon" />
                 </a>
-                <a target="_blank" href="https://x.com">
-                    <font-awesome-icon :icon="['fab', 'square-twitter']" class="socials__icon"/>
-                </a>
-                <a target="_blank" href="https://instagram.com">
+                <a target="_blank" href="https://www.instagram.com/thelizvenz?igsh=Mmd5aGF3eTF2YWdi&utm_source=qr">
                     <font-awesome-icon :icon="['fab', 'square-instagram']" class="socials__icon"/>
                 </a>
             </div>
@@ -112,8 +106,10 @@ const updateCount = () => {
         --secondary-color-light: rgb(82, 69, 54);
         --on-secondary-color: rgb(179, 179, 179);
 
-        --bg-color: #fff9f3;
+        --bg-color: #fff3e5;
         --header-bg-color: rgb(255, 255, 255);
+
+        --bg-transparent: #ffffffcf;
 
         --title-font: Portrait-Regular;
     }
@@ -245,9 +241,10 @@ const updateCount = () => {
         display: grid;
         justify-content: center;
         align-content: center;
+        background-position: center;
 
         &__title {
-            background-color: #ffffff8c;
+            background: var(--bg-transparent);
             color: var(--secondary-color);
             padding-right: 1em;
             padding-top: 0.5em;
