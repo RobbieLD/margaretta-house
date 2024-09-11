@@ -1,41 +1,25 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { RouterView, useRouter } from 'vue-router'
-import { useCookies } from 'vue3-cookies';
 
 const year = new Date().getFullYear();
 const menuOpen = ref(false);
 const version = ref('LOCAL');
 const router = useRouter();
-const { cookies } = useCookies();
 
 onMounted(() => {
     version.value = import.meta.env.VITE_VERSION;
-    isAuth.value = !!cookies.get("auth");
 });
 
 router.beforeEach(() => {
     menuOpen.value = false
 });
 
-// TEMP CODE
-const isAuth = ref(false);
-const authCount = ref(0);
-
-const updateCount = () => {
-    authCount.value++;
-
-    if (authCount.value >= 3) {
-        isAuth.value = true;
-        cookies.set("auth", "true")
-    }
-}
 
 </script>
 
 <template>
-    <div v-if="!isAuth" class="soon" @click="updateCount" @touchend="updateCount">Coming Soon</div>
-    <header v-if="isAuth" class="header">            
+    <header class="header">            
         <div class="menu">
             <RouterLink to="/" v-if="router.currentRoute.value.path != '/'">Home</RouterLink>
             <RouterLink to="booking">Bookings</RouterLink>
@@ -73,10 +57,10 @@ const updateCount = () => {
             </div>
         </div>
     </header>
-    <main v-if="isAuth" class="main">
+    <main class="main">
         <RouterView />
     </main>
-    <footer v-if="isAuth" class="footer">
+    <footer class="footer">
         <div class="footer__address">
             <div>Margaretta House</div>
             <div>100 Main Rd</div>
@@ -358,13 +342,4 @@ const updateCount = () => {
         font-size: 3em;
         font-variant: small-caps;
     }
-
-    .soon {
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        font-size: 2em;
-        text-align: center;
-    }
-
 </style>

@@ -152,6 +152,19 @@
 
         <div class="link">
             <div class="link__name">
+                Hello Friends
+            </div>
+            <a target="_blank" class="link__url" href="https://www.hellofriends.org.uk/">https://www.hellofriends.org.uk/</a>    
+            <div class="link__description">
+                <img src="/attractions/play.jpg">
+            </div>
+            <div class="link__address">
+                Hanse House, 8 South Quay, Kings Lynn
+            </div>
+        </div>
+
+        <div class="link">
+            <div class="link__name">
                 Good for the kids
             </div>
             <div class="link__description">
